@@ -1,16 +1,28 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 const AddUser = () => {
 
     const [username, setUsername] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e);
+    const handleSubmit = async(e) => {
+        // console.log(e);
+        // console.log(username);
+        // setUsername("");
+        const base_url = "http://localhost:3000";
 
-        console.log(username);
+        try{
+            e.preventDefault();
+            const response = await axios.post(`${base_url}/adduser`, {
+                username
+            });
+            console.log(response);
+        }
+        catch(err){
+            console.log("Error: ",err);
+        }
 
-        setUsername("");
+
     }
 
     return (
