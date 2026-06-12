@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import {toast} from 'react-hot-toast';
 
 const AddUser = () => {
 
@@ -16,7 +17,10 @@ const AddUser = () => {
             const response = await axios.post(`${base_url}/adduser`, {
                 username
             });
-            console.log(response);
+            console.log(response.data.message);
+            toast.success(response.data.message);
+
+            setUsername("");
         }
         catch(err){
             console.log("Error: ",err);

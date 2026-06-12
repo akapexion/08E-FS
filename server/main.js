@@ -13,9 +13,17 @@ app.use(cors());
 app.use(express.json());
 
 
-app.post("/adduser", (req, res) => {
-    res.send({message: "Request Received"});
-    console.log(req.body.username);
+app.post("/adduser", async(req, res) => {
+    try{
+        await user.insertOne({
+            user_name : req.body.username
+        });
+        res.send({message : "User Added Successfully"});
+    }
+    catch(err){
+        console.log("Error Adding Data", err);
+        res.send({message : err});
+    }
 })
 
 app.listen(process.env.PORT || 5000, () => {
