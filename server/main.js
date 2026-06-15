@@ -26,6 +26,23 @@ app.post("/adduser", async(req, res) => {
     }
 })
 
+
+app.get("/users", async(req, res) => {
+    try {
+        const allUsers = await user.find();
+        res.send(allUsers);
+
+    }
+    catch(err){
+        console.log("Error Fetching Data", err);
+        res.send({message : err});
+    }
+})
+
+
+
+
+
 app.listen(process.env.PORT || 5000, () => {
     console.log("Server Started");
 })
