@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import AddUser from './components/AddUser'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AllUsers from './components/AllUsers';
+import Counter from './Counter';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<AllUsers/>}/>
                 <Route path="/adduser" element={<AddUser/>}/>
+                <Route path="/count" element={<Counter/>}/>
             </Routes>
 
         <Footer/>

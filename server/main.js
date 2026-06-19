@@ -39,6 +39,29 @@ app.get("/users", async(req, res) => {
     }
 })
 
+app.put("/updateuser/:id", async(req, res) => {
+    try{
+        await user.updateOne({_id : req.params.id}, {$set : {user_name : req.body.editName}});
+
+        res.send({message : "User updated successfully"});
+    }
+    catch(err){
+        console.log(err);
+        res.send({message : err});
+    }
+})
+
+app.delete("/deleteuser/:id", async(req, res) => {
+    try{
+        await user.deleteOne({_id : req.params.id});
+        res.send({message : "User removed sucessfully"});
+    }
+    catch(err){
+        console.log(err);
+        res.send({message: err});
+    }
+})
+
 
 
 
